@@ -22,10 +22,10 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.TimeZone;
 
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.RandomUtils;
-import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 
 
@@ -271,7 +271,7 @@ public class lastDate {
 		int ranNo = 0;
 		boolean isZero = true;		
 		while(isZero) {
-			ranNo = ran.nextInt(range);
+			ranNo = ran.nextInt(0, range);
 			if(ranNo != 0) isZero = false;
 		}
 		return ranNo;
@@ -326,8 +326,8 @@ public class lastDate {
 		String footer = "T000000013500000000000000000000000000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ";
 		out.write(header);
 		for(int i=0;i<cnt;i++) {
-			int mchtSeq = ran.nextInt(99);
-			long ltrxAmt = ran.nextInt(9999);
+			int mchtSeq = ran.nextInt(0,99);
+			long ltrxAmt = ran.nextInt(0,9999);
 			String trxAmt = StringUtils.leftPad(String.valueOf(i+1), 4, "0");
 			
 			String mchtNo = mchtList[mchtSeq];

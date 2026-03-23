@@ -12,9 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
-
-import net.sf.json.JSONObject;
+import org.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * <b>공통 MAP</b>

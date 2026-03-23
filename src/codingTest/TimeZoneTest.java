@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.TimeZone;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 public class TimeZoneTest {
 	

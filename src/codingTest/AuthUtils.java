@@ -8,7 +8,7 @@ import java.util.Base64;
 import java.util.StringTokenizer;
 
 import org.apache.commons.codec.DecoderException;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import codingTest.EncryptUtils.HMACSHA256;

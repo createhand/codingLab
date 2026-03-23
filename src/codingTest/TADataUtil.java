@@ -28,11 +28,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONException;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONSerializer;
-import net.sf.json.JsonConfig;
+import com.google.gson.Gson;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TADataUtil {
     
@@ -103,23 +102,17 @@ public class TADataUtil {
 	
 	//GLN_HEADER json 객체를 GlnDataHeader 객체로 변환한다.
 	public static GlnDataHeader jsonToGlnDataHeader(JSONObject json) throws JSONException {
-		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.setRootClass(GlnDataHeader.class);
-		return (GlnDataHeader)JSONSerializer.toJava(json, jsonConfig);
+		return (GlnDataHeader)JSONObject.fromJson(json.toString(), GlnDataHeader.class);
 	}
 	
 	//GlnDataHeader 객체를 TAData 객체로 변환한다.
 	public static TAData glnDataHeaderToTAData(GlnDataHeader glnDataHeader) throws JSONException {
-		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.setRootClass(GlnDataHeader.class);
-		return jsonToTAData(JSONObject.fromObject(glnDataHeader, jsonConfig));
+		return jsonToTAData(JSONObject.fromJson(glnDataHeader.toString(), JSONObject.class));
 	}
 	
 	//GlnDataHeader 객체를 Map 객체로 변환한다.
 	public static Map<String, Object> glnDataHeaderToMap(GlnDataHeader glnDataHeader) throws JSONException {
-		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.setRootClass(GlnDataHeader.class);
-		return jsonToTAData(JSONObject.fromObject(glnDataHeader, jsonConfig)).toMap();
+		return (Map<String, Object>) jsonToTAData(JSONObject.fromJson(glnDataHeader.toString(), JSONObject.class));
 	}
 	
 	public static TAData jsonToTAData(JSONObject json) throws JSONException {
@@ -166,7 +159,7 @@ public class TADataUtil {
 
 	public static List<Object> toList(JSONArray array) throws JSONException {
 	    List<Object> list = new ArrayList<Object>();
-	    for(int i = 0; i < array.size(); i++) {
+	    for(int i = 0; i < array.length(); i++) {
 	        Object value = array.get(i);
 	        if(value instanceof JSONArray) {
 	            value = toList((JSONArray) value);
@@ -226,9 +219,9 @@ public class TADataUtil {
 			JSONObject json = null;
 			if(row instanceof TAData) {
 				json = toJson((TAData)row);
-				array.add(json);
+				array.put(json);
 			} else {
-				array.add(row);
+				array.put(row);
 			}
 		}
 

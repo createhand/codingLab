@@ -1,7 +1,7 @@
 package codingTest;
 
 import lombok.extern.slf4j.Slf4j;
-import net.sf.json.JSONObject;
+import org.json.JSONObject;
 
 @Slf4j
 public class JsonToText {
@@ -991,7 +991,7 @@ public class JsonToText {
 				"";
 		
 		
-		JSONObject requestJson = JSONObject.fromObject(jsonString);
+		JSONObject requestJson = JSONObject.fromJson(jsonString, JSONObject.class);
 		TAData result = TADataUtil.jsonToTAData(requestJson);
 		
 		for(String key : result.keySet()) {

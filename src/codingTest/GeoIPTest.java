@@ -4,12 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 
-import org.junit.Test;
-
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 import com.maxmind.geoip2.model.CountryResponse;
+import org.junit.jupiter.api.Test;
 
 public class GeoIPTest {
 	public static void main(String[] args) throws IOException {
